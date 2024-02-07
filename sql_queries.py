@@ -34,3 +34,10 @@ class BlogDB:
         data = self.cursor.fetchall()
         self.close()
         return data
+    
+    def get_post(self, post_id):
+        self.open()
+        self.cursor.execute("SELECT * FROM posts WHERE id=?", [post_id])
+        data = self.cursor.fetchone()
+        self.close()
+        return data
